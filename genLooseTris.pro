@@ -18,4 +18,11 @@ main :-
 				  term_to_atom(C, SC)
 				 ), Rows2),
 	csv_write_file("loose2.csv", Rows2),
+	findall(row(SA, SB, SC), (
+				 looseTriangle(3, A, B, C),
+				  term_to_atom(A, SA),
+				  term_to_atom(B, SB),
+				  term_to_atom(C, SC)
+				 ), Rows3),
+	csv_write_file("loose3.csv", Rows3),
 	halt.

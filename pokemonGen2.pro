@@ -1,5 +1,4 @@
 :- module(pokemonGen2, [gen2/1, strong2/2, useless2/2, weak2/2, neutral2/2]).
-:- use_module(pokemonGen1).
 
 gen2(normal).
 gen2(fire).
