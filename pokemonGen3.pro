@@ -87,3 +87,4 @@ gen3([water, psychic]).
 gen3([water, rock]).
 
 % Gen3 does not change the Gen2 typechart, according to Bulbapedia.
+% http://bulbapedia.bulbagarden.net/w/index.php?title=Type/Type_chart&oldid=2564741

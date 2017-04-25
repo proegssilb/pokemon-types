@@ -1,0 +1,12 @@
+bug,"[grass,ground]",fire
+bug,"[grass,ice]",flying
+dark,ghost,"[bug,ghost]"
+fighting,rock,flying
+fire,grass,water
+fire,grass,"[ice,ground]"
+fire,steel,rock
+fire,steel,"[ice,ground]"
+fire,"[grass,flying]",rock
+flying,"[grass,flying]",rock
+grass,ground,poison
+grass,water,"[ice,ground]"

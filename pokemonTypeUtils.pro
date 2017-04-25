@@ -6,24 +6,26 @@
 :- use_module(pokemonGen1).
 :- use_module(pokemonGen2).
 :- use_module(pokemonGen3).
+:- use_module(pokemonGen4).
 
 checkgen(Gen, TypeA) :-
 	Gen = 1 -> gen1(TypeA);
 	Gen = 2 -> gen2(TypeA);
-	Gen = 3 -> gen3(TypeA).
+	Gen = 3 -> gen3(TypeA);
+	Gen = 4 -> gen4(TypeA).
 
 unspecified(Gen, TypeA, TypeB) :-
 	Gen = 1 -> (\+ strong1(TypeA, TypeB), \+ weak1(TypeA, TypeB),
 							\+useless1(TypeA, TypeB));
-	member(Gen, [2,3]) -> (\+ strong2(TypeA, TypeB), \+ weak2(TypeA, TypeB),
-												 \+useless2(TypeA, TypeB), \+ neutral2(TypeA, TypeB)).
+	(2=<Gen, Gen=<4) -> (\+ strong2(TypeA, TypeB), \+ weak2(TypeA, TypeB),
+											 \+useless2(TypeA, TypeB), \+ neutral2(TypeA, TypeB)).
 
 strong(Gen, A, B) :-
 	checkgen(Gen, A),
 	checkgen(Gen, B),
 	(atom(A), atom(B)) -> (
 		Gen = 1 -> strong1(A, B);
-		member(Gen, [2,3]) -> (strong2(A, B); unspecified(2, A, B), strong1(A, B))
+		(2=<Gen, Gen=<4) -> (strong2(A, B); unspecified(2, A, B), strong1(A, B))
 	);
 	([A1, A2] = A, [B1, B2] = B) -> (
 		       strong(Gen, A1, B1), \+ weak(Gen, A1, B2);
@@ -44,7 +46,7 @@ useless(Gen, A, B) :-
 	checkgen(Gen, A), checkgen(Gen, B),
 	(atom(A), atom(B)) -> (
 		Gen = 1 -> useless1(A, B);
-		member(Gen, [2,3]) -> (useless2(A, B); unspecified(2, A, B), useless1(A, B))
+		(2=<Gen, Gen=<4) -> (useless2(A, B); unspecified(2, A, B), useless1(A, B))
 	);
 	([A1, A2] = A, [B1, B2] = B) -> (
 			useless(Gen, A1, B),
@@ -64,7 +66,7 @@ weak(Gen, A, B) :-
 	checkgen(Gen, B),
 	(atom(A), atom(B)) -> (
 		Gen = 1 -> weak1(A, B);
-		member(Gen, [2,3]) -> (weak2(A, B); unspecified(2, A, B), weak1(A, B))
+		(2=<Gen, Gen=<4) -> (weak2(A, B); unspecified(2, A, B), weak1(A, B))
 	);
 	([A1, A2] = A, [B1, B2] = B) -> (
 		       weak(Gen, A1, B1), \+ strong(Gen, A1, B2);
@@ -85,7 +87,7 @@ neutral(Gen, A, B) :-
 	checkgen(Gen, A), checkgen(Gen, B),
 	(atom(A), atom(B)) -> (
 			Gen = 1 -> unspecified(1, A, B);
-			member(Gen, [2,3]) -> (neutral2(A, B);
+			(2=<Gen, Gen=<4) -> (neutral2(A, B);
 														 unspecified(2, A, B), unspecified(1, A, B))
 	);
 	([A1, A2] = A, [B1, B2] = B) -> (
