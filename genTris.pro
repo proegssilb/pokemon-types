@@ -32,4 +32,11 @@ main :-
 				  term_to_atom(C, SC)
 				 ), Rows4),
 	csv_write_file("triangles4.csv", Rows4),
+	findall(row(SA, SB, SC), (
+				 triangle(5, A, B, C),
+				  term_to_atom(A, SA),
+				  term_to_atom(B, SB),
+				  term_to_atom(C, SC)
+				 ), Rows5),
+	csv_write_file("triangles5.csv", Rows5),
 	halt.

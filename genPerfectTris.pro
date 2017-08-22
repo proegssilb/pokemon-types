@@ -32,4 +32,11 @@ main :-
 				  term_to_atom(C, SC)
 				 ), Rows4),
 	csv_write_file("perfect4.csv", Rows4),
+	findall(row(SA, SB, SC), (
+				 perfectTriangle(5, A, B, C),
+				  term_to_atom(A, SA),
+				  term_to_atom(B, SB),
+				  term_to_atom(C, SC)
+				 ), Rows5),
+	csv_write_file("perfect5.csv", Rows5),
 	halt.
