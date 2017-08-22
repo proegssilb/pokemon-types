@@ -1,6 +1,7 @@
 bug,"[grass,ground]",fire
 bug,"[grass,ice]",flying
 dark,ghost,"[bug,ghost]"
+fairy,"[rock,fighting]",steel
 fighting,rock,flying
 fighting,"[dark,fighting]",psychic
 fighting,"[fighting,dark]",psychic

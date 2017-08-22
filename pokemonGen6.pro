@@ -1,4 +1,4 @@
-:- module(pokemonGen6, [gen6/1, neutral6/2, strong6/2, weak6/2]).
+:- module(pokemonGen6, [gen6/1, neutral6/2, strong6/2, weak6/2, useless6/2]).
 
 gen6(normal).
 gen6(fire).
@@ -173,8 +173,13 @@ strong6(fairy, fighting).
 strong6(fairy, dragon).
 strong6(fairy, dark).
 strong6(poison, fairy).
+strong6(steel, fairy).
 
 weak6(fairy, poison).
 weak6(fairy, steel).
 weak6(fairy, fire).
 weak6(fighting, fairy).
+weak6(bug, fairy).
+weak6(dark, fairy).
+
+useless6(dragon, fairy).

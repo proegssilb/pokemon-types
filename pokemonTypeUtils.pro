@@ -64,7 +64,8 @@ useless(Gen, A, B) :-
 		use1(Gen) -> useless1(A, B);
 		use2(Gen) -> (useless2(A, B); unspecified(2, A, B), useless1(A, B));
 		% Gen 6 doesn't declare useless6.
-		use6(Gen) -> (useless2(A, B); unspecified(2, A, B), useless1(A, B))
+		use6(Gen) -> (useless6(A, B); unspecified(6, A, B), useless2(A, B);
+		              unspecified(2, A, B), useless1(A, B))
 	);
 	([A1, A2] = A, [B1, B2] = B) -> (
 			useless(Gen, A1, B),
